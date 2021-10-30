@@ -19,10 +19,13 @@ class ProdiController extends Controller
     {
         $validateData = $request->validate([
             'nama' => 'required',
-            'fakultas' => 'required'
+            'fakultas_id' => 'required'
         ]);
 
+        // dd($validateData);
+
         Prodi::create($validateData);
+
         return redirect('/admin/prodi')->with('success', 'Prodi Berhasil di Tambah');
     }
     public function show(Prodi $prodi)

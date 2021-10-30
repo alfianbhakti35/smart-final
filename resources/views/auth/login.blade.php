@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Signin Template · Bootstrap v5.0</title>
+    <title>Smart Disabilitas · Login</title>
 
 
 
@@ -36,7 +36,7 @@
     <main class="form-signin">
         <form action="/autentikasi" method="POST">
             @csrf
-            <img class="mb-4" src="assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+            <img class="mb-4" src="/assets/img/s.png" alt="" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
             <div class="form-floating">

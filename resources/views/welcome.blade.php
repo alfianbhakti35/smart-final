@@ -20,7 +20,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="..." /></a>
+                <a class="navbar-brand" href="#page-top">Smart Disabilitas</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
@@ -54,16 +54,16 @@
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class="fas fa-blind fa-stack-1x fa-inverse"></i>
                         </span>
-                        <h4 class="my-3">Tuna Netra</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                        <h4 class="my-3">Tunanetra</h4>
+                        <p class="text-muted">Tunanetra adalah istilah umum yang digunakan untuk kondisi seseorang yang mengalami gangguan atau hambatan dalam indra penglihatannya.</p>
                     </div>
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class="fas fa-american-sign-language-interpreting fa-stack-1x fa-inverse"></i>
                         </span>
-                        <h4 class="my-3">Tuna Rungu</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                        <h4 class="my-3">Tunarungu</h4>
+                        <p class="text-muted">Tunarungu adalah seseorang yang memiliki hambatan dalam fungsi pendengarannya. Kondisi ini bisa berlangsung hanya sementara atau permanen.</p>
                     </div>
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
@@ -71,7 +71,7 @@
                             <i class="fas fa-chalkboard-teacher fa-stack-1x fa-inverse"></i>
                         </span>
                         <h4 class="my-3">Slow Learning</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                        <p class="text-muted">Anak slow learner merupakan anak yang mengalami lamban belajar, lamban terampil, dan lamban mamahami suatu informasi yang diperoleh atau ditangkapnya.</p>
                     </div>
                 </div>
             </div>
@@ -82,28 +82,35 @@
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted"></h3>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="..." />
-                            <h4>Parveen Anand</h4>
-                            <p class="text-muted">Lead Designer</p>
+                            <img class="mx-auto rounded-circle" src="/assets/img/1.jpeg" alt="..." />
+                            <h4>Abdul Aziz, M.Pd</h4>
+                            <p class="text-muted">Ketua</p>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="..." />
-                            <h4>Diana Petersen</h4>
-                            <p class="text-muted">Lead Marketer</p>
+                            <img class="mx-auto rounded-circle" src="/assets/img/2.jpeg" alt="..." />
+                            <h4>Yul Alfian Hadi, M.Pd</h4>
+                            <p class="text-muted">Anggota</p>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
-                            <h4>Larry Parker</h4>
-                            <p class="text-muted">Lead Developer</p>
+                            <img class="mx-auto rounded-circle" src="/assets/img/3.jpeg" alt="..." />
+                            <h4>Muhammad Sururruddin, M.Pd.</h4>
+                            <p class="text-muted">Anggota</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="/assets/img/4.jpeg" alt="..." />
+                            <h4>Muhammad Husni, M.Pd</h4>
+                            <p class="text-muted">Anggota</p>
                         </div>
                     </div>
                 </div>

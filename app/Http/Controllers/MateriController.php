@@ -2,82 +2,64 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\EvaluasiImport;
 use App\Models\Materi;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MateriController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Materi  $materi
-     * @return \Illuminate\Http\Response
-     */
+        // ddd($request);
+        $validateData = $request->validate([
+            'nama' => 'required',
+            'materi_tunanetra' => 'file|max:10240',
+            'materi_slow_lerning' => 'file|max:10240',
+            'materi_tunarungu' => 'required',
+            'matakuliah_id' => 'required'
+        ]);
+
+
+        if ($request->file('materi_tunanetra') && $request->file('materi_slow_lerning')) {
+            $validateData['materi_tunanetra'] = $request->file('materi_tunanetra')->store('materi');
+            $validateData['materi_slow_lerning'] = $request->file('materi_slow_lerning')->store('materi');
+        }
+
+        $file = $request->file('evaluasi');
+        $nameFile = $file->getClientOriginalName();
+        $file->move('import', $nameFile);
+
+        // Save materi ke database
+        $materi = Materi::create($validateData);
+        $materi_id = $materi['id'];
+
+
+
+        Excel::import(new EvaluasiImport($materi_id), public_path('/import/' . $nameFile));
+        return redirect('/admin/materi')->with('success', 'Materi Berhasil di Tambah');
+    }
     public function show(Materi $materi)
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Materi  $materi
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Materi $materi)
     {
         //
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Materi  $materi
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Materi $materi)
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Materi  $materi
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Materi $materi)
     {
         //

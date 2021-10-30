@@ -4,50 +4,24 @@
 
 <div class="page-inner py-5">
     <div class="row">
+
+        @foreach ($matakuliah as $m)
+
         <div class="col-sm-6 col-md-3">
             <div class="card card-primary">
-                <div class="card-body skew-shadow">
-                    <h3><a href="">Nama Matakuliah</a></h3>
-                    <h5 class="op-8">Nama Dosen</h5>
-                    <div class="pull-right">
-                        <h3 class="fw-bold op-8">100</h3>
+                    <div class="card-body skew-shadow">
+                        <h3><a href="/mahasiswa/materi/{{ $m['id'] }}" class="stretched-link"> {{ $m['nama'] }} </a></h3>
+                        @foreach ($dosen as $d)
+                            @if ($d['id'] === $m['dosen_id'])
+                                <h5 class="op-8">{{ $d['nama'] }}</h5>
+                            @endif
+                        @endforeach
                     </div>
-                </div>
             </div>
         </div>
-        <div class="col-sm-6 col-md-3">
-            <div class="card card-secondary">
-                <div class="card-body skew-shadow">
-                    <h3><a href="">Nama Matakuliah</a></h3>
-                    <h5 class="op-8">Nama Dosen</h5>
-                    <div class="pull-right">
-                        <h3 class="fw-bold op-8">100</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-3">
-            <div class="card card-secondary">
-                <div class="card-body skew-shadow">
-                    <h3><a href="">Nama Matakuliah</a></h3>
-                    <h5 class="op-8">Nama Dosen</h5>
-                    <div class="pull-right">
-                        <h3 class="fw-bold op-8">100</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-3">
-            <div class="card card-secondary">
-                <div class="card-body skew-shadow">
-                    <h3><a href="">Nama Matakuliah</a></h3>
-                    <h5 class="op-8">Nama Dosen</h5>
-                    <div class="pull-right">
-                        <h3 class="fw-bold op-8">100</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        @endforeach
+
     </div>
 </div>
 @endsection

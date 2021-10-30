@@ -15,7 +15,14 @@
                     <div class="col-7 col-stats">
                         <div class="numbers">
                             <p class="card-category">Program Studi</p>
-                            <h4 class="card-title">{{ $prodi }}</h4>
+
+                            @foreach ($prodi as $p)
+                                @if ($p['id'] === auth()->user()->prodi_id)
+                                <h4 class="card-title">{{ $p['nama'] }}</h4>
+
+                                @endif
+                            @endforeach
+
                         </div>
                     </div>
                 </div>
@@ -34,7 +41,7 @@
                     <div class="col-7 col-stats">
                         <div class="numbers">
                             <p class="card-category">Matakuliah</p>
-                            <h4 class="card-title">11</h4>
+                            <h4 class="card-title">{{ $matakuliah }}</h4>
                         </div>
                     </div>
                 </div>
@@ -53,7 +60,7 @@
                     <div class="col-7 col-stats">
                         <div class="numbers">
                             <p class="card-category">Materi</p>
-                            <h4 class="card-title">89</h4>
+                            <h4 class="card-title">{{ $materi }}</h4>
                         </div>
                     </div>
                 </div>

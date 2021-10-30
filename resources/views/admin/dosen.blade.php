@@ -56,7 +56,7 @@
 
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Prodi</label>
-                                            <select class="form-control" id="prodi" name="prodi">
+                                            <select class="form-control" id="prodi_id" name="prodi_id">
                                                 <option value=""><i>Pilih Prodi</i></option>
                                                 @foreach ($prodi as $p)
                                                     <option value="{{ $p['id'] }}">{{ $p['nama'] }}</option>
@@ -80,9 +80,10 @@
 
             <div class="table-responsive">
                 <table id="add-row" class="display table table-striped table-hover" >
-                    <thead>
+                    <thead class="thead-dark">
                         <tr>
                             <th style="width: 50%">Nama</th>
+                            <th>Username</th>
                             <th >NIDN</th>
                             <th style="width: 10%">Action</th>
                         </tr>
@@ -90,6 +91,7 @@
                     <tfoot>
                         <tr>
                             <th>Nama</th>
+                            <th>Username</th>
                             <th>NIDN</th>
                             <th>Action</th>
                         </tr>
@@ -99,6 +101,7 @@
                             @if ($d['level'] === 'dosen')
                             <tr>
                                 <td>{{ $d['nama'] }}</td>
+                                <td>{{ $d['username'] }}</td>
                                 <td>{{ $d['nim'] }}</td>
                                 <td>
                                     <div class="form-button-action">

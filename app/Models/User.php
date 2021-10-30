@@ -23,7 +23,7 @@ class User extends Authenticatable
         'password',
         'nim',
         'level',
-        'prodi'
+        'prodi_id'
     ];
 
     /**

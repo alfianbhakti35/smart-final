@@ -58,7 +58,7 @@
 
             <div class="table-responsive">
                 <table id="add-row" class="display table table-striped table-hover" >
-                    <thead>
+                    <thead class="thead-dark">
                         <tr>
                             <th style="width: 50%">Nama</th>
                             <th>Nim</th>

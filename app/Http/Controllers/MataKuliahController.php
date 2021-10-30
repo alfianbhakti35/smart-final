@@ -19,7 +19,7 @@ class MataKuliahController extends Controller
     {
         $validateData = $request->validate([
             'nama' => 'required',
-            'prodi' => 'required',
+            'prodi_id' => 'required',
             'dosen_id' => 'required',
             'semester' => 'required'
         ]);

@@ -17,7 +17,18 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.index', ['title' => 'Dashboard']);
+        $jmlahMhs = count(User::where('level', 'mahasiswa')->get());
+        $jmlahDosen = count(User::where('level', 'dosen')->get());
+        $jmlProdi = count(Prodi::all());
+        $jmlFakultas = count(Faculty::all());
+
+        return view('admin.index', [
+            'title' => 'Dashboard',
+            'mahasiswa' => $jmlahMhs,
+            'dosen' => $jmlahDosen,
+            'prodi' => $jmlProdi,
+            'fakultas' => $jmlFakultas
+        ]);
     }
 
     // Fitur Mahasiswa
@@ -34,6 +45,8 @@ class AdminController extends Controller
         $file = $request->file('file');
         $nameFile = $file->getClientOriginalName();
         $file->move('import', $nameFile);
+
+        // dd($nameFile);
 
         Excel::import(new UsersImport, public_path('/import/' . $nameFile));
         return redirect('/admin/mahasiswa');
@@ -104,7 +117,7 @@ class AdminController extends Controller
             'nama' => 'required',
             'username' => 'required',
             'nim' => 'required',
-            'prodi' => 'required',
+            'prodi_id' => 'required',
         ]);
 
         $data['level'] = 'dosen';

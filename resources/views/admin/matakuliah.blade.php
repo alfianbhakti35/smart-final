@@ -45,7 +45,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Prodi</label>
-                                            <select class="form-control" id="prodi" name="prodi">
+                                            <select class="form-control" id="prodi_id" name="prodi_id">
                                                 <option value="">Pilih Prodi</option>
                                                 @foreach ($prodi as $f)
 
@@ -89,7 +89,7 @@
 
             <div class="table-responsive">
                 <table id="add-row" class="display table table-striped table-hover" >
-                    <thead>
+                    <thead class="thead-dark">
                         <tr>
                             <th>Nama</th>
                             <th style="width: 40%">Prodi</th>
@@ -108,7 +108,11 @@
 
                         <tr>
                             <td>{{ $d['nama'] }}</td>
-                            <td>{{ $d['prodi'] }}</td>
+                            @foreach ($prodi as $p)
+                                @if ($p['id'] === $d['prodi_id'])
+                                    <td>{{ $p['nama'] }}</td>
+                                @endif
+                            @endforeach
                             <td>
                                 <div class="form-button-action">
                                     <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">

@@ -45,11 +45,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Fakultas</label>
-                                            <select class="form-control" id="fakultas" name="fakultas">
+                                            <select class="form-control" id="fakultas_id" name="fakultas_id">
                                                 <option value="">Pilih Fakultas</option>
                                                 @foreach ($fakultas as $f)
 
-                                                    <option value="{{ $f['nama'] }}">{{ $f['nama'] }}</option>
+                                                    <option value="{{ $f['id'] }}">{{ $f['nama'] }}</option>
 
                                                 @endforeach
                                             </select>
@@ -70,16 +70,18 @@
 
             <div class="table-responsive">
                 <table id="add-row" class="display table table-striped table-hover" >
-                    <thead>
+                    <thead class="thead-dark">
                         <tr>
-                            <th>Nama</th>
-                            <th style="width: 40%">Fakultas</th>
+                            <th style="width: 40%">Nama</th>
+                            <th>Prodi ID</th>
+                            <th >Fakultas</th>
                             <th style="width: 10%">Action</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>Nama</th>
+                            <th>Prodi ID</th>
                             <th>Fakultas</th>
                             <th>Action</th>
                         </tr>
@@ -89,7 +91,12 @@
 
                         <tr>
                             <td>{{ $d['nama'] }}</td>
-                            <td>{{ $d['fakultas'] }}</td>
+                            <td>{{ $d['id'] }}</td>
+                                @foreach ($fakultas as $f)
+                                    @if ($f['id'] === $d['fakultas_id'])
+                                        <td>{{ $f['nama'] }}</td>
+                                    @endif
+                                @endforeach
                             <td>
                                 <div class="form-button-action">
                                     <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
