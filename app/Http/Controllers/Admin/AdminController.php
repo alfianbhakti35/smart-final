@@ -6,7 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Controller;
 use App\Imports\EvaluasiImport;
 use App\Imports\UsersImport;
-use App\Models\Faculty;
+use App\Models\FakultasUniv;
 use App\Models\MataKuliah;
 use App\Models\Materi;
 use App\Models\Prodi;
@@ -24,7 +24,7 @@ class AdminController extends Controller
         $jmlahMhs = count(User::where('level', 'mahasiswa')->get());
         $jmlahDosen = count(User::where('level', 'dosen')->get());
         $jmlProdi = count(Prodi::all());
-        $jmlFakultas = count(Faculty::all());
+        $jmlFakultas = count(FakultasUniv::all());
 
         return view('admin.index', [
             'title' => 'Dashboard',
@@ -95,7 +95,7 @@ class AdminController extends Controller
     {
         return view('admin.fakultas', [
             'title' => 'Fakultas',
-            'data' => Faculty::all()
+            'data' => FakultasUniv::all()
         ]);
     }
 
@@ -105,7 +105,7 @@ class AdminController extends Controller
         return view('admin.prodi', [
             'title' => 'Prodi',
             'data' => Prodi::all(),
-            'fakultas' => Faculty::all()
+            'fakultas' => FakultasUniv::all()
         ]);
     }
 
