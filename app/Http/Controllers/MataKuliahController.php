@@ -26,7 +26,7 @@ class MataKuliahController extends Controller
 
 
         MataKuliah::create($validateData);
-        return redirect('/admin/matakuliah')->with('success', 'Matakuliah Berhasil di Tambah');
+        return redirect('/admin/matakuliah')->with('toast_success', 'Matakuliah Berhasil di Tambah');
     }
     public function show(MataKuliah $mataKuliah)
     {
@@ -40,8 +40,9 @@ class MataKuliahController extends Controller
     {
         //
     }
-    public function destroy(MataKuliah $mataKuliah)
+    public function destroy($id)
     {
-        //
+        MataKuliah::where('id', $id)->delete();
+        return redirect()->back()->with('toast_success', 'Matakuliah berhasil dihapus');
     }
 }

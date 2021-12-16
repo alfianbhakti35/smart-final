@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Mahasiswa;
 
 use App\Http\Controllers\Controller;
 use App\Models\Evaluasi;
+use App\Models\HasilEvaluasi;
 use App\Models\MataKuliah;
 use App\Models\Materi;
 use App\Models\Prodi;
@@ -15,7 +16,6 @@ class MahasiswaController extends Controller
 {
     public function index()
     {
-
         $prodi = Prodi::all();
         $matakuliah = count(MataKuliah::all());
         $materi = count(Materi::all());
@@ -242,10 +242,37 @@ class MahasiswaController extends Controller
         }
 
         $nilaitotal = ($nilai * 100) / $jml;
+        $pembulatan = round($nilaitotal);
+        $mhsID = Auth::user()->id;
+
+        // Simpan Nilai ke database
+        HasilEvaluasi::create([
+            'mahasiswa_id' => $mhsID,
+            'materi_id' => $materi_id,
+            'nilai' => $pembulatan
+        ]);
+
+        // Return view ke tampilan hasil nilai
         return view('mahasiswa.hasilevaluasi', [
             'title' => 'Hasil Evaluasi',
             'evaluasi' => '',
-            'nilai' => $nilaitotal
+            'nilai' => $pembulatan
+        ]);
+    }
+
+    public function listHasilEvaluasi()
+    {
+        $mhsID = Auth::user()->id;
+        $hasilEvaluasi = HasilEvaluasi::where('mahasiswa_id', $mhsID)->get();
+
+        dd($hasilEvaluasi);
+    }
+
+    public function keritikDanSaran()
+    {
+        return view('mahasiswa.keritik', [
+            'title' => 'Keritik dan Saran',
+            'evaluasi' => '',
         ]);
     }
 }

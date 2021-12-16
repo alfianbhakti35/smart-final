@@ -7,32 +7,14 @@ use Illuminate\Http\Request;
 
 class FacultyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $validateData = $request->validate([
@@ -40,51 +22,27 @@ class FacultyController extends Controller
         ]);
 
         Faculty::create($validateData);
-        return redirect('/admin/fakultas')->with('success', 'Fakultas Berhasil di Tambah');
+        return redirect('/admin/fakultas')->with('toast_success', 'Fakultas Berhasil di Tambah');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Faculty  $faculty
-     * @return \Illuminate\Http\Response
-     */
     public function show(Faculty $faculty)
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Faculty  $faculty
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Faculty $faculty)
     {
         //
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Faculty  $faculty
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Faculty $faculty)
+    public function update(Request $request)
     {
-        //
+        Faculty::where('id', $request['id'])->update([
+            'nama' => $request['nama']
+        ]);
+
+        return redirect()->back()->with('toast_success', 'Data berhasil diubah');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Faculty  $faculty
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Faculty $faculty)
+    public function destroy($id)
     {
-        //
+        Faculty::where('id', $id)->delete();
+        return redirect()->back()->with('toast_success', 'Data berhasil dihapus');
     }
 }

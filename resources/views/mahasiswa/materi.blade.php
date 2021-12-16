@@ -8,9 +8,11 @@
         @foreach ($materi as $m)
         <div class="col-sm-6 col-md-4">
             <div class="card">
-                <h5 class="card-header"></h5>
+                <img class="card-img-top" src="https://random.imagecdn.app/500/150">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $m['nama'] }}</h5>
+                    <b>
+                        <h5 class="card-title">{{ $m['nama'] }}</h5>
+                    </b>
                     <p class="card-text"></p>
                     <a href="/mahasiswa/tunanetra/{{ $m['id'] }}" class="btn btn-primary">Tunanetra</a>
                     <a href="/mahasiswa/tunarungu/{{ $m['id'] }}" class="btn btn-primary">Tunarungu</a>

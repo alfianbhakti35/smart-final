@@ -145,15 +145,14 @@
 	<!-- jQuery Scrollbar -->
 	<script src="/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 
+    <!-- Chart Circle -->
+	<script src="/assets/js/plugin/chart-circle/circles.min.js"></script>
 
 	<!-- Chart JS -->
 	<script src="/assets/js/plugin/chart.js/chart.min.js"></script>
 
 	<!-- jQuery Sparkline -->
-	<script src="/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
-
-	<!-- Chart Circle -->
-	<script src="/assets/js/plugin/chart-circle/circles.min.js"></script>
+	<script src="/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js">
 
 	<!-- Datatables -->
 	<script src="/assets/js/plugin/datatables/datatables.min.js"></script>
@@ -200,5 +199,26 @@
 			fillColor: 'rgba(255, 165, 52, .14)'
 		});
 	</script>
+    @include('sweetalert::alert')
+
+    @if ( $title === "Hasil Evaluasi" )
+        <script>
+            Circles.create({
+                    id:'circles-1',
+                    radius:45,
+                    value:{{ $nilai }},
+                    maxValue:100,
+                    width:7,
+                    text: {{ $nilai }},
+                    colors:['#f1f1f1', '#FF9E27'],
+                    duration:400,
+                    wrpClass:'circles-wrp',
+                    textClass:'circles-text',
+                    styleWrapper:true,
+                    styleText:true
+            })
+        </script>
+    @endif
+
 </body>
 </html>

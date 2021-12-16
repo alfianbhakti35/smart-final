@@ -6,6 +6,7 @@ use App\Imports\EvaluasiImport;
 use App\Models\Materi;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MateriController extends Controller
 {
@@ -19,12 +20,10 @@ class MateriController extends Controller
     }
     public function store(Request $request)
     {
-
-        // ddd($request);
         $validateData = $request->validate([
             'nama' => 'required',
-            'materi_tunanetra' => 'file|max:10240',
-            'materi_slow_lerning' => 'file|max:10240',
+            'materi_tunanetra' => 'file|max:511200',
+            'materi_slow_lerning' => 'file|max:511200',
             'materi_tunarungu' => 'required',
             'matakuliah_id' => 'required'
         ]);
@@ -46,7 +45,7 @@ class MateriController extends Controller
 
 
         Excel::import(new EvaluasiImport($materi_id), public_path('/import/' . $nameFile));
-        return redirect('/admin/materi')->with('success', 'Materi Berhasil di Tambah');
+        return redirect()->back()->with('toast_success', 'Materi Berhasil di Tambah');
     }
     public function show(Materi $materi)
     {
@@ -60,8 +59,10 @@ class MateriController extends Controller
     {
         //
     }
-    public function destroy(Materi $materi)
+    public function destroy($id)
     {
-        //
+        Materi::where('id', $id)->delete();
+
+        return redirect()->back()->with('success', 'Materi Berhasil Dihapus');
     }
 }

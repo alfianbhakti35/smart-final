@@ -33,6 +33,7 @@
     <link href="css/signin.css" rel="stylesheet">
 </head>
   <body class="text-center">
+    @include('sweetalert::alert')
     <main class="form-signin">
         <form action="/autentikasi" method="POST">
             @csrf

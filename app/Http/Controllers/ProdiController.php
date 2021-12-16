@@ -26,7 +26,7 @@ class ProdiController extends Controller
 
         Prodi::create($validateData);
 
-        return redirect('/admin/prodi')->with('success', 'Prodi Berhasil di Tambah');
+        return redirect('/admin/prodi')->with('toast_success', 'Prodi Berhasil di Tambah');
     }
     public function show(Prodi $prodi)
     {
@@ -36,12 +36,18 @@ class ProdiController extends Controller
     {
         //
     }
-    public function update(Request $request, Prodi $prodi)
+    public function update(Request $request)
     {
-        //
+        Prodi::where('id', $request['id'])->update([
+            'nama' => $request['nama'],
+            'fakultas_id' => $request['fakultas_id']
+        ]);
+
+        return redirect()->back()->with('toast_success', 'Data Prodi Berhasil di Ubah');
     }
-    public function destroy(Prodi $prodi)
+    public function destroy($id)
     {
-        //
+        Prodi::where('id', $id)->delete();
+        return redirect()->back()->with('toast_success', 'Data berhasil dihapus');
     }
 }

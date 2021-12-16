@@ -104,7 +104,7 @@
 			<div class="main-panel">
 				<div class="content">
                     {{-- Content --}}
-
+                    @include('sweetalert::alert')
 					@yield('dosen')
 
                     {{-- End Content --}}
@@ -152,11 +152,11 @@
 	<script src="/assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
 	<script src="/assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
 
-	<!-- Sweet Alert -->
-	<script src="/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
-
 	<!-- Atlantis JS -->
 	<script src="/assets/js/atlantis.min.js"></script>
+
+    <!-- Sweet Alert -->
+	<script src="/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
 
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	{{-- <script src="/assets/js/setting-demo.js"></script> --}}
@@ -237,5 +237,41 @@
 			});
 		});
 	</script>
+    {{-- KONFIRMASI UNTUK HAPUS --}}
+    <script>
+        $('.delete-confirm').on('click', function (event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Peringatan !',
+            text: 'Anda Akan Menghapus Materi, apakah anda ingin melanjutkan ?',
+            icon: 'warning',
+            buttons: ["Cancel", "Yes!"],
+        }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
+    </script>
+
+    {{-- KONFIRMASI UNTUK RESET PASSWORD --}}
+    <script>
+        $('.reset-confirm').on('click', function (event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Peringatan !',
+            text: 'Anda ingin mereset password ?',
+            icon: 'warning',
+            buttons: ["Cancel", "Yes!"],
+        }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
+    </script>
+
 </body>
 </html>

@@ -18,7 +18,7 @@ class CekLogin
     public function handle(Request $request, Closure $next, $role)
     {
         if (!Auth::check()) {
-            return redirect('login');
+            return redirect('/login');
         }
 
         $user = Auth::user();
@@ -26,6 +26,6 @@ class CekLogin
             return $next($request);
         }
 
-        return redirect('login');
+        return redirect('/login');
     }
 }

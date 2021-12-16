@@ -24,6 +24,7 @@
 
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	{{-- <link rel="stylesheet" href="/assets/css/demo.css"> --}}
+
 </head>
 <body>
 	<div class="wrapper static-sidebar">
@@ -67,8 +68,8 @@
 										<div class="user-box">
 											<div class="avatar-lg"><img src="/assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
-												<h4>Hizrian</h4>
-												<p class="text-muted">hello@example.com</p>
+												<h4>{{ auth()->user()->nama }}</h4>
+												{{-- <p class="text-muted">{{ auth()->user()->nim }}</p> --}}
 											</div>
 										</div>
 									</li>
@@ -80,9 +81,11 @@
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">Account Setting</a>
 										<div class="dropdown-divider"></div> --}}
+
+                                        <button class="dropdown-item" data-toggle="modal" data-target="#gantiPassword">Ganti Password</button>
 										<form action="/logout" method="POST">
                                             @csrf
-                                            <button type="submit" class="dropdown-item" href="#">Logout</button>
+                                            <button type="submit" class="dropdown-item">Logout</button>
                                         </form>
 									</li>
 								</div>
@@ -104,10 +107,53 @@
 			<div class="main-panel">
 				<div class="content">
                     {{-- Content --}}
-
+                    @include('sweetalert::alert')
 					@yield('admin')
 
                     {{-- End Content --}}
+                    <!-- Modal -->
+            <div class="modal fade" id="gantiPassword" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header no-bd">
+                            <h5 class="modal-title">
+                                <span class="fw-mediumbold">
+                                Ganti</span>
+                                <span class="fw-light">
+                                    Password
+                                </span>
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="small">Silahkan Masukkan Password Baru Anda</p>
+                            <form action="/admin/gantipassword" method="POST">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-sm-12">
+
+                                        <input type="text" id="id" name="id" value="{{ auth()->user()->id }}" hidden>
+                                        <div class="form-group">
+                                            <label for="password">Password Baru</label>
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password Baru">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                        </div>
+                        <div class="modal-footer no-bd">
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </form>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- End Modal --}}
 				</div>
 				<footer class="footer">
 					<div class="container-fluid">
@@ -237,5 +283,42 @@
 			});
 		});
 	</script>
+
+{{-- KONFIRMASI UNTUK HAPUS --}}
+<script>
+    $('.delete-confirm').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Peringatan !',
+        text: 'Anda Akan Menghapus Data {{ $title }}, apakah anda ingin melanjutkan ?',
+        icon: 'warning',
+        buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
+</script>
+
+{{-- KONFIRMASI UNTUK RESET PASSWORD --}}
+<script>
+    $('.reset-confirm').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Peringatan !',
+        text: 'Anda ingin mereset password ?',
+        icon: 'warning',
+        buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
+</script>
+
 </body>
 </html>

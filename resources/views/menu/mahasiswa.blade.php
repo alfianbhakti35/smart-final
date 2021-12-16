@@ -63,6 +63,12 @@
                         <p>Semester 8</p>
                     </a>
                 </li>
+                <li class="nav-item ">
+                    <a href="/mahasiswa/kritikdansaran" class="" aria-expanded="false">
+                        <i class="fas fa-envelope"></i>
+                        <p>Keritik & Saran</p>
+                    </a>
+                </li>
 
                 {{-- <li class="nav-item {{ ($title === "Kelas Perkuliahan") ? 'active' : '' }}">
                     <a href="/admin/materi" class="" aria-expanded="false">

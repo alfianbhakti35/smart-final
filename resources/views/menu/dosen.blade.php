@@ -16,6 +16,13 @@
                     </a>
                 </li>
 
+                <li class="nav-item {{ ($title === "Hasil Evaluasi") ? 'active' : '' }}">
+                    <a href="/dosen/evaluasi" class="" aria-expanded="false">
+                        <i class="fas fa-bookmark"></i>
+                        <p>Hasil Evaluasi</p>
+                    </a>
+                </li>
+
                 {{-- <li class="nav-item {{ ($title === "Matakuliah") ? 'active' : '' }}">
                     <a href="/dosen/matakuliah" class="" aria-expanded="false">
                         <i class="fas fa-book-reader"></i>

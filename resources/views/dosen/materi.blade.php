@@ -35,7 +35,7 @@
                         </div>
                         <div class="modal-body">
                             <p class="small">Silahkan Masukkan Materi</p>
-                            <form action="/admin/addmateri" method="POST" enctype="multipart/form-data">
+                            <form action="/dosen/addmateri" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -113,12 +113,9 @@
                             @endforeach
                             <td>
                                 <div class="form-button-action">
-                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
-                                        <i class="fa fa-edit"></i>
-                                    </button>
-                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Hapus">
-                                        <i class="fa fa-times"></i>
-                                    </button>
+                                    <a href="/dosen/materi/hapus/{{ $d['id'] }}" title="Hapus" class="btn btn-link btn-danger delete-confirm" id="delete-confirm" data-original-title="Hapus">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
                                 </div>
                             </td>
                         </tr>

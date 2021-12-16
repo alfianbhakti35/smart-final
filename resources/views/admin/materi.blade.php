@@ -14,6 +14,10 @@
                     <i class="fa fa-plus"></i>
                     Tambah Materi
                 </button>
+                <a class="btn btn-primary btn-round ml-1" href="/admin/formatsoal">
+                    <i class="fa fa-download"></i>
+                    Format Import Sola
+                </a>
             </div>
         </div>
         <div class="card-body">
@@ -116,9 +120,9 @@
                                     <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
                                         <i class="fa fa-edit"></i>
                                     </button>
-                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Hapus">
-                                        <i class="fa fa-times"></i>
-                                    </button>
+                                    <a href="/admin/materi/hapus/{{ $d['id'] }}" title="" class="btn btn-link btn-danger delete-confirm" id="delete-confirm" data-original-title="Hapus">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
                                 </div>
                             </td>
                         </tr>
